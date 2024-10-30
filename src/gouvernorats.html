@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carthage - Gouvernorats</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Détails des Gouvernorats</h1>
+    </header>
+    
+    <section id="region-info">
+        <h2>Informations sur la région</h2>
+        <div id="content"></div>
+    </section>
+
+    <footer>
+        <p>© 2024 Carthage. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const region = params.get('region');
+        document.getElementById('content').innerText = `Vous avez sélectionné la région: ${region}`;
+    </script>
+</body>
+</html>

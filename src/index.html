@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accueil - Carthage</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="https://cdn.wegic.ai/assets/onepage/thread/icon/default.png" />
+    <meta name="description" content="Explorez les régions de Tunisie avec Carthage." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Bienvenue sur Carthage</h1>
+            <p>Découvrez la richesse culturelle et historique des gouvernorats tunisiens.</p>
+            <nav>
+                <button onclick="navigateTo('gouvernorats.html')">Gouvernorats</button>
+                <button onclick="navigateTo('tourisme.html')">Tourisme</button>
+                <button onclick="navigateTo('contact.html')">Contact</button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Explorez la Tunisie</h2>
+            <p>Plongez dans la beauté de chaque région.</p>
+            <button class="explore-btn" onclick="navigateTo('gouvernorats.html')">Commencez votre voyage</button>
+        </div>
+    </section>
+
+    <section id="tunisia-map">
+        <h2>Carte Interactive de la Tunisie</h2>
+        <div id="map" style="height: 400px;"></div>
+    </section>
+
+    <section id="features">
+        <h2>Nos Services</h2>
+        <div class="feature-container">
+            <div class="feature">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>Cartes Interactives</h3>
+                <p>Explorez les gouvernorats avec nos cartes interactives.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-history"></i>
+                <h3>Richesse Historique</h3>
+                <p>Découvrez l'histoire fascinante de chaque région.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-utensils"></i>
+                <h3>Gastronomie Locale</h3>
+                <p>Goûtez aux délices culinaires de la Tunisie.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="map">
+        <h2>Carte Interactive des Gouvernorats</h2>
+        <div class="map-container">
+            <div class="region" data-region="Tunis" onclick="navigateToRegion('Tunis')">Tunis</div>
+            <div class="region" data-region="Sousse" onclick="navigateToRegion('Sousse')">Sousse</div>
+            <div class="region" data-region="Sfax" onclick="navigateToRegion('Sfax')">Sfax</div>
+            <!-- Ajoutez d'autres régions ici -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Carthage. Tous droits réservés.</p>
+        <div class="social-media">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialisation de la carte
+        const map = L.map('map').setView([33.8869, 9.5375], 6); // Coordonnées de la Tunisie
+
+        // Ajout d'une couche de carte
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Coordonnées et couleurs des gouvernorats
+        const gouvernorats = [
+            { name: "Tunis", coords: [36.8065, 10.1815], color: 'red' },
+            { name: "Ariana", coords: [36.8663, 10.1478], color: 'blue' },
+            { name: "Manouba", coords: [36.8375, 9.9833], color: 'green' },
+            { name: "Ben Arous", coords: [36.7458, 10.1815], color: 'purple' },
+            { name: "Nabeul", coords: [36.4575, 10.7383], color: 'orange' },
+            { name: "Zaghouan", coords: [36.4000, 9.6200], color: 'cyan' },
+            { name: "Bizerte", coords: [37.2700, 9.8738], color: 'magenta' },
+            { name: "Beja", coords: [36.7250, 9.1839], color: 'yellow' },
+            { name: "Jendouba", coords: [36.5000, 8.7800], color: 'brown' },
+            { name: "Kef", coords: [36.1850, 8.7175], color: 'pink' },
+            { name: "Siliana", coords: [35.7892, 9.3682], color: 'lightgreen' },
+            { name: "Sousse", coords: [35.8256, 10.6412], color: 'darkorange' },
+            { name: "Monastir", coords: [35.7644, 10.8310], color: 'lightblue' },
+            { name: "Mahdia", coords: [35.5043, 10.5333], color: 'lightcoral' },
+            { name: "Sfax", coords: [34.7404, 10.7603], color: 'lightpink' },
+            { name: "Gafsa", coords: [34.4231, 8.7771], color: 'lightyellow' },
+            { name: "Tozeur", coords: [33.9016, 8.1347], color: 'lightgray' },
+            { name: "Kasserine", coords: [35.1667, 8.8333], color: 'lightseagreen' },
+            { name: "Sidi Bouzid", coords: [35.0383, 9.4820], color: 'lightsalmon' },
+            { name: "Kebili", coords: [33.7075, 8.6944], color: 'lavender' },
+            { name: "Gabes", coords: [33.8833, 10.0992], color: 'lightsteelblue' },
+            { name: "Medenine", coords: [33.3542, 10.5028], color: 'lightgoldenrodyellow' },
+            { name: "Tataouine", coords: [32.9300, 10.4450], color: 'peachpuff' },
+            { name: "Ariana", coords: [36.8663, 10.1478], color: 'tomato' }
+        ];
+
+        // Ajout des marqueurs pour chaque gouvernorat avec des couleurs différentes
+        gouvernorats.forEach(gouvernorat => {
+            L.marker(gouvernorat.coords, { icon: L.divIcon({ className: 'custom-icon', html: `<div style="background-color: ${gouvernorat.color}; width: 20px; height: 20px; border-radius: 50%;"></div>` }) })
+                .addTo(map)
+                .bindPopup(gouvernorat.name);
+        });
+    </script>
+</body>
+
+</html>

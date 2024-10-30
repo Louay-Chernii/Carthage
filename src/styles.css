@@ -1,0 +1,197 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    animation: fadeIn 1s ease-in-out; /* Fade-in effect for the body */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background-image: url('images/tunisia.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire header */
+    background-position: center; /* Center the image */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    padding: 50px 0; /* Padding for spacing */
+    position: relative; /* Positioning context for child elements */
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s; /* Add transform transition */
+}
+
+nav button:hover {
+    background-color: #004494;
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+#hero {
+    background-image: url('images/sidibou.jpg'); /* Path to your image */
+    background-size: cover; /* Cover the entire section */
+    background-position: center; /* Center the image */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    padding: 100px 0; /* Padding for spacing */
+    position: relative; /* Positioning context for child elements */
+}
+
+.hero-content {
+    position: relative; /* Ensure content is above the background */
+    z-index: 1; /* Bring content above the background */
+    animation: fadeInUp 0.8s ease-in-out; /* Fade-in-up effect */
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.explore-btn {
+    padding: 10px 20px;
+    background-color: #FF4694;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Add transform transition */
+}
+
+.explore-btn:hover {
+    background-color: #e63972;
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+#features {
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.feature-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.feature {
+    background-color: #e7e7e7;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    transition: transform 0.3s, box-shadow 0.3s; /* Add shadow transition */
+}
+
+.feature:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+.feature i {
+    font-size: 2em;
+    color: #007BFF;
+}
+
+#map {
+    padding: 20px;
+    text-align: center;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.region {
+    background-color: #e7e7e7;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.region:hover {
+    background-color: #d4d4d4;
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #007BFF;
+    color: white;
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-media a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+#tunisia-map {
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.map-image {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.map-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-icon {
+    background-color: transparent;
+    border: none;
+}
+
+header h1, header p, #hero h2, #hero p {
+    position: relative; /* Ensure text is above the background */
+    z-index: 1; /* Bring text above the background */
+}
